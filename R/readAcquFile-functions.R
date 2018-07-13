@@ -335,6 +335,15 @@
   metaData$targetSerialNumber <- .grepAcquValue("##\\$TgSer", acquLines)
   metaData$targetTypeNumber <- .grepAcquValue("##\\$TgTyp", acquLines)
 
+  procsFile <- sub(pattern="fid$", x=fidFile, replacement="/pdata/1/procs")
+  
+  if(file.exists(procsFile)){
+    con <- file(procsFile, "rt")
+    procsLines <- readLines(con, n=-1)
+    close(con)
+    metaData$runGUID <- .grepAcquValue("##\\$RunGUID", procsLines)
+  }
+  
   metaData$file <- fidFile
 
   metaData$sampleName <- .sampleName(fidFile)

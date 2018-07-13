@@ -2,3 +2,5 @@
 ^Makefile$
 ^\.git$
 ^\.gitignore$
+^.*\.Rproj$
+^\.Rproj\.user$
